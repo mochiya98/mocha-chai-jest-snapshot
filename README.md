@@ -74,9 +74,9 @@ optionally you can add serializer:
 
 ```js
 const chai = require("chai");
-const { initSnapshotManager, addSnapshotSerializer } = require("mocha-chai-jest-snapshot");
+const { initSnapshotManager, addSerializer } = require("mocha-chai-jest-snapshot");
 const customSerializer = require("...");
 
 chai.use(initSnapshotManager);
-addSnapshotSerializer(customSerializer);
+addSerializer(customSerializer);
 ```
