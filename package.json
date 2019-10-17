@@ -1,0 +1,67 @@
+{
+  "name": "mocha-chai-jest-snapshot",
+  "version": "1.0.0",
+  "description": "provides snapshot testing like jest",
+  "keywords": [
+    "mocha",
+    "chai",
+    "assertion",
+    "helper",
+    "jest",
+    "snapshot",
+    "react",
+    "test",
+    "spec",
+    "testing"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mochiya98/mocha-chai-jest-snapshot.git"
+  },
+  "author": "Yukimasa Funaoka <yukimasafunaoka@gmail.com>",
+  "license": "MIT",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "npx tsc",
+    "test": "npx run-p -l test:*",
+    "test:eslint": "npx eslint --color --cache \"src/**/*.ts\"",
+    "test:mocha": "npx mocha -c -r ts-node/register --file setup.js \"test/**/*.ts\"",
+    "prepack": "npm run build"
+  },
+  "files": [
+    "dist/**",
+    "setup.js"
+  ],
+  "dependencies": {
+    "@jest/test-result": "^24.9.0",
+    "app-root-path": "^2.2.1",
+    "chai": "^4.2.0",
+    "chalk": "^2.4.2",
+    "jest-snapshot": "^24.9.0",
+    "jest-util": "^24.9.0",
+    "slash": "^3.0.0",
+    "yargs": "^14.2.0"
+  },
+  "devDependencies": {
+    "@types/app-root-path": "^1.2.4",
+    "@types/chai": "^4.2.3",
+    "@types/mocha": "^5.2.7",
+    "@types/node": "^12.7.12",
+    "@typescript-eslint/eslint-plugin": "^2.4.0",
+    "@typescript-eslint/parser": "^2.4.0",
+    "eslint": "^6.5.1",
+    "eslint-config-prettier": "^6.4.0",
+    "eslint-config-standard": "^14.1.0",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-node": "^10.0.0",
+    "eslint-plugin-prettier": "^3.1.1",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-standard": "^4.0.1",
+    "mocha": "^6.2.1",
+    "npm-run-all": "^4.1.5",
+    "prettier": "^1.18.2",
+    "ts-node": "^8.4.1",
+    "typescript": "^3.6.4"
+  }
+}
