@@ -2,6 +2,8 @@
 
 ![Travis (.org)](https://img.shields.io/travis/mochiya98/mocha-chai-jest-snapshot?style=flat-square) ![npm](https://img.shields.io/npm/v/mocha-chai-jest-snapshot?style=flat-square) ![MIT](https://img.shields.io/npm/l/mocha-chai-jest-snapshot?style=flat-square)
 
+[![NPM](https://nodei.co/npm/mocha-chai-jest-snapshot.png)](https://nodei.co/npm/mocha-chai-jest-snapshot/)
+
 provides snapshot testing like jest
 
 ## Features
@@ -21,7 +23,6 @@ npm i -D mocha-chai-jest-snapshot
 
 then add to your test setup:
 
-
 ```js
 // e.g. setup.js (mocha --file setup.js)
 const chai = require("chai");
@@ -34,8 +35,8 @@ enjoy.
 
 ```js
 const { expect } = require("chai");
-it("foo", function(){
-	expect({foo: "bar"}).to.matchSnapshot();
+it("foo", function () {
+  expect({ foo: "bar" }).to.matchSnapshot();
 });
 ```
 
@@ -74,7 +75,10 @@ optionally you can add serializer:
 
 ```js
 const chai = require("chai");
-const { initSnapshotManager, addSerializer } = require("mocha-chai-jest-snapshot");
+const {
+  initSnapshotManager,
+  addSerializer,
+} = require("mocha-chai-jest-snapshot");
 const customSerializer = require("...");
 
 chai.use(initSnapshotManager);
