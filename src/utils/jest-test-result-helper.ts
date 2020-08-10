@@ -7,7 +7,7 @@
 import {
   SnapshotSummary,
   TestResult,
-  makeEmptyAggregatedTestResult
+  makeEmptyAggregatedTestResult,
 } from "@jest/test-result";
 import { SnapshotStateType } from "jest-snapshot";
 import { SnapshotStateOptions } from "jest-snapshot/build/State";
@@ -34,7 +34,7 @@ export const packSnapshotState = (
     unchecked: 0,
     uncheckedKeys: [],
     unmatched: 0,
-    updated: 0
+    updated: 0,
   };
   const uncheckedCount = snapshotState.getUncheckedCount();
   const uncheckedKeys = snapshotState.getUncheckedKeys();
@@ -80,7 +80,7 @@ export const addSnapshotResult = (
   if (snapshotResult.uncheckedKeys && snapshotResult.uncheckedKeys.length > 0) {
     snapshotSummary.uncheckedKeysByFile.push({
       filePath: testFilePath,
-      keys: snapshotResult.uncheckedKeys
+      keys: snapshotResult.uncheckedKeys,
     });
   }
 

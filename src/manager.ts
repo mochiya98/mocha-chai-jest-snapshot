@@ -6,7 +6,7 @@ import {
   SnapshotSummary,
   packSnapshotState,
   addSnapshotResult,
-  makeEmptySnapshotSummary
+  makeEmptySnapshotSummary,
 } from "./utils/jest-test-result-helper";
 import { getSnapshotSummaryOutput } from "./utils/jest-reporters-lite";
 import { snapshotResolver, snapshotOptions } from "./helper";
@@ -31,19 +31,20 @@ class SnapshotManager {
     );
   }
 
-  setContext(context: Runnable | Context) {
+  setContext(context: Runnable | Context): void {
     if (!context.title || !context.file) return;
 
     this.context = context;
     if (this.testFile !== context.file) this.onFileChanged();
   }
 
-  assert(received: unknown, message: string) {
+  assert(received: unknown, message: string): void {
     if (!this.snapshotState || !this.context) return;
 
     const { actual, expected, key, pass } = this.snapshotState.match({
       testName: this.context.fullTitle(),
-      received
+      received,
+      isInline: false,
     });
     if (!pass) {
       expect(expected ? expected.trim() : "").equals(
@@ -63,7 +64,7 @@ class SnapshotManager {
     this.snapshotState = null;
   }
 
-  report() {
+  report(): void {
     const outputs = getSnapshotSummaryOutput(this.snapshotSummary);
     if (outputs.length > 1) console.log("\n" + outputs.join("\n"));
   }

@@ -3,7 +3,7 @@ module.exports = {
     "standard",
     "prettier",
     "plugin:@typescript-eslint/eslint-recommended",
-    "plugin:@typescript-eslint/recommended"
+    "plugin:@typescript-eslint/recommended",
   ],
   plugins: ["prettier"],
   rules: {
@@ -12,6 +12,6 @@ module.exports = {
     "@typescript-eslint/explicit-function-return-type": "off",
     "@typescript-eslint/no-namespace": "off",
     "import/no-unresolved": "off",
-    "no-console": "off"
-  }
+    "no-console": "off",
+  },
 };

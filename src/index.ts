@@ -8,16 +8,16 @@ type ChaiPlugin = FirstFunctionArgument<typeof chaiUse>;
 
 const manager = new SnapshotManager();
 
-const initSnapshotManager: ChaiPlugin = function(chai, utils) {
-  beforeEach(function() {
+const initSnapshotManager: ChaiPlugin = function (chai, utils) {
+  beforeEach(function () {
     if (this.currentTest) manager.setContext(this.currentTest);
   });
-  after(function() {
+  after(function () {
     manager.saveSnap();
     manager.report();
   });
-  utils.addMethod(chai.Assertion.prototype, "matchSnapshot", function(
-    this: object,
+  utils.addMethod(chai.Assertion.prototype, "matchSnapshot", function (
+    this: Record<string, unknown>,
     message?: string
   ) {
     const expected = utils.flag(this, "object");

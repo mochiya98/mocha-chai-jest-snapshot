@@ -98,7 +98,7 @@ export const getSnapshotSummaryOutput = (
     const [head, ...tail] = snapshots.filesRemovedList;
     summary.push(`  ${DOWN_ARROW} ${DOT}${formatTestPath(head)}`);
 
-    tail.forEach(key => {
+    tail.forEach((key) => {
       summary.push(`      ${DOT}${formatTestPath(key)}`);
     });
   }
@@ -131,10 +131,10 @@ export const getSnapshotSummaryOutput = (
       );
     }
 
-    snapshots.uncheckedKeysByFile.forEach(uncheckedFile => {
+    snapshots.uncheckedKeysByFile.forEach((uncheckedFile) => {
       summary.push(`  ${DOWN_ARROW}${formatTestPath(uncheckedFile.filePath)}`);
 
-      uncheckedFile.keys.forEach(key => {
+      uncheckedFile.keys.forEach((key) => {
         summary.push(`      ${DOT}${key}`);
       });
     });
