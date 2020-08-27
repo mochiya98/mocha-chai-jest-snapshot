@@ -1,6 +1,10 @@
 import chai from "chai";
 import { Runnable, Context } from "mocha";
-import { SnapshotState, SnapshotStateType } from "jest-snapshot";
+import {
+  SnapshotState,
+  SnapshotStateType,
+  SnapshotResolver,
+} from "jest-snapshot";
 
 import {
   SnapshotSummary,
@@ -9,7 +13,8 @@ import {
   makeEmptySnapshotSummary,
 } from "./utils/jest-test-result-helper";
 import { getSnapshotSummaryOutput } from "./utils/jest-reporters-lite";
-import { snapshotResolver, snapshotOptions } from "./helper";
+import { snapshotOptions } from "./helper";
+import { Config } from "@jest/types";
 
 const { expect } = chai;
 
@@ -18,6 +23,19 @@ class SnapshotManager {
   snapshotSummary: SnapshotSummary = makeEmptySnapshotSummary(snapshotOptions);
   context: Runnable | Context | null = null;
   testFile = "";
+  snapshotResolver: SnapshotResolver;
+  rootDir: Config.Path;
+
+  constructor({
+    rootDir,
+    snapshotResolver,
+  }: {
+    rootDir: Config.Path;
+    snapshotResolver: SnapshotResolver;
+  }) {
+    this.rootDir = rootDir;
+    this.snapshotResolver = snapshotResolver;
+  }
 
   onFileChanged(): void {
     if (!this.context) return;
@@ -26,7 +44,7 @@ class SnapshotManager {
 
     this.testFile = this.context.file;
     this.snapshotState = new SnapshotState(
-      snapshotResolver.resolveSnapshotPath(this.testFile),
+      this.snapshotResolver.resolveSnapshotPath(this.testFile),
       snapshotOptions
     );
   }
@@ -65,7 +83,10 @@ class SnapshotManager {
   }
 
   report(): void {
-    const outputs = getSnapshotSummaryOutput(this.snapshotSummary);
+    const outputs = getSnapshotSummaryOutput(
+      this.rootDir,
+      this.snapshotSummary
+    );
     if (outputs.length > 1) console.log("\n" + outputs.join("\n"));
   }
 }

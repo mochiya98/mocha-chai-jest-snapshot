@@ -12,8 +12,8 @@ provides snapshot testing like jest
 - ✅ Output the same snapshot file as jest
 - ✅ Output the same snapshot summary as jest
 - ✅ Detect obsolete snapshots
-- ✅ Supports custom serializer
-- ✅ Contains typescript definition
+- ✅ Support custom serializer
+- ✅ Support typescript
 
 ## Usage
 
@@ -21,14 +21,14 @@ provides snapshot testing like jest
 npm i -D mocha-chai-jest-snapshot
 ```
 
-then add to your test setup:
+then add it to the test setup:
 
 ```js
 // e.g. setup.js (mocha --file setup.js)
 const chai = require("chai");
-const { initSnapshotManager } = require("mocha-chai-jest-snapshot");
+const { jestSnapshotPlugin } = require("mocha-chai-jest-snapshot");
 
-chai.use(initSnapshotManager);
+chai.use(jestSnapshotPlugin());
 ```
 
 enjoy.
@@ -36,7 +36,7 @@ enjoy.
 ```js
 const { expect } = require("chai");
 it("foo", function () {
-  expect({ foo: "bar" }).to.matchSnapshot();
+  expect({ foo: "bar" }).toMatchSnapshot();
 });
 ```
 
@@ -63,24 +63,79 @@ Object {
 `;
 ```
 
-if you want to update snapshots, add `--update` arg or set the env `UPDATE_SNAPSHOT`.
+### update snapshots
 
 ```bash
+# set envoriment
 UPDATE_SNAPSHOT=1 mocha ...
-# or
+# or add command line argument
 mocha ... --update
 ```
 
-optionally you can add serializer:
+### report at the end
+
+```bash
+npx mocha ... --reporter mocha-chai-jest-snapshot/reporters/spec
+```
+
+### with options
+
+#### jest options (setup)
+
+```js
+const chai = require("chai");
+const { jestSnapshotPlugin } = require("mocha-chai-jest-snapshot");
+
+chai.use(
+  jestSnapshotPlugin({
+    rootDir: "../",
+    snapshotResolver: "<rootDir>/jest/snapshotResolver",
+    snapshotSerializers: ["jest-serializer-vue"],
+  })
+);
+```
+
+#### jest options (package.json)
+
+```json
+{
+  "jest": {
+    "rootDir": "../",
+    "snapshotResolver": "<rootDir>/jest/snapshotResolver",
+    "snapshotSerializers": ["jest-serializer-vue"]
+  }
+}
+```
+
+#### jest options (jest.config.js)
+
+```js
+module.exports = {
+  rootDir: "../",
+  snapshotResolver: "<rootDir>/jest/snapshotResolver",
+  snapshotSerializers: ["jest-serializer-vue"],
+};
+```
+
+#### custom serializer
 
 ```js
 const chai = require("chai");
 const {
-  initSnapshotManager,
+  jestSnapshotPlugin,
   addSerializer,
 } = require("mocha-chai-jest-snapshot");
 const customSerializer = require("...");
 
-chai.use(initSnapshotManager);
+chai.use(jestSnapshotPlugin());
 addSerializer(customSerializer);
+```
+
+or
+
+```js
+const { expect } = require("chai");
+const customSerializer = require("...");
+
+expect.addSnapshotSerializer(customSerializer);
 ```

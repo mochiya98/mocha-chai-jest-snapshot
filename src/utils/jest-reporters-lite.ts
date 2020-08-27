@@ -4,17 +4,16 @@
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  */
-import appRoot from "app-root-path";
 import { Config } from "@jest/types";
 import { SnapshotSummary } from "@jest/test-result";
-import chalk from "chalk";
 import { pluralize } from "jest-util";
 import path, { isAbsolute } from "path";
 import slash from "slash";
+import chalk = require("chalk");
 
-const formatTestPath = (testPath: Config.Path) => {
+const formatTestPath = (rootDir: Config.Path, testPath: Config.Path) => {
   if (isAbsolute(testPath)) {
-    testPath = path.relative(appRoot.path, testPath);
+    testPath = path.relative(rootDir, testPath);
   }
   const dirname = path.dirname(testPath);
   const basename = path.basename(testPath);
@@ -35,6 +34,7 @@ const SNAPSHOT_UPDATED = chalk.bold.green;
 const updateCommand = "re-run mocha with `--update` to update them";
 
 export const getSnapshotSummaryOutput = (
+  rootDir: Config.Path,
   snapshots: SnapshotSummary
 ): Array<string> => {
   const summary = [];
@@ -96,10 +96,10 @@ export const getSnapshotSummaryOutput = (
   }
   if (snapshots.filesRemovedList && snapshots.filesRemovedList.length) {
     const [head, ...tail] = snapshots.filesRemovedList;
-    summary.push(`  ${DOWN_ARROW} ${DOT}${formatTestPath(head)}`);
+    summary.push(`  ${DOWN_ARROW} ${DOT}${formatTestPath(rootDir, head)}`);
 
     tail.forEach((key) => {
-      summary.push(`      ${DOT}${formatTestPath(key)}`);
+      summary.push(`      ${DOT}${formatTestPath(rootDir, key)}`);
     });
   }
 
@@ -132,7 +132,9 @@ export const getSnapshotSummaryOutput = (
     }
 
     snapshots.uncheckedKeysByFile.forEach((uncheckedFile) => {
-      summary.push(`  ${DOWN_ARROW}${formatTestPath(uncheckedFile.filePath)}`);
+      summary.push(
+        `  ${DOWN_ARROW}${formatTestPath(rootDir, uncheckedFile.filePath)}`
+      );
 
       uncheckedFile.keys.forEach((key) => {
         summary.push(`      ${DOT}${key}`);

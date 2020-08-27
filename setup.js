@@ -1,4 +1,4 @@
 const chai = require("chai");
-const { initSnapshotManager } = require("./dist/");
+const { jestSnapshotPlugin } = require("./dist/");
 
-chai.use(initSnapshotManager);
+chai.use(jestSnapshotPlugin());

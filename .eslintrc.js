@@ -13,5 +13,12 @@ module.exports = {
     "@typescript-eslint/no-namespace": "off",
     "import/no-unresolved": "off",
     "no-console": "off",
+    "@typescript-eslint/no-var-requires": "off",
   },
+  overrides: [
+    {
+      files: ["**/*.ts"],
+      rules: { "@typescript-eslint/no-var-requires": ["error"] },
+    },
+  ],
 };

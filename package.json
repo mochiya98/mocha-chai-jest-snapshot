@@ -24,33 +24,34 @@
   "types": "dist/index.d.ts",
   "scripts": {
     "build": "npx tsc",
-    "test": "npx run-p -l test:*",
+    "test": "npm run build && npx run-p -l test:*",
     "test:eslint": "npx eslint --color --cache \"src/**/*.ts\"",
     "test:mocha": "npx mocha -c -r ts-node/register --file setup.js \"test/**/*.ts\"",
     "prepack": "npm run build"
   },
   "files": [
     "dist/**",
+    "reporters/**",
     "setup.js"
   ],
   "dependencies": {
     "@jest/test-result": "^26.3.0",
-    "app-root-path": "^3.0.0",
     "chai": "^4.2.0",
     "chalk": "^4.1.0",
-    "jest-snapshot": "^26.3.0",
+    "find-package-json": "^1.2.0",
+    "jest-snapshot": "^26.4.2",
     "jest-util": "^26.3.0",
     "slash": "^3.0.0",
     "yargs": "^15.4.1"
   },
   "devDependencies": {
-    "@types/app-root-path": "^1.2.4",
     "@types/chai": "^4.2.12",
-    "@types/mocha": "^8.0.1",
-    "@types/node": "^14.0.27",
-    "@typescript-eslint/eslint-plugin": "^3.8.0",
-    "@typescript-eslint/parser": "^3.8.0",
-    "eslint": "^7.6.0",
+    "@types/find-package-json": "^1.1.1",
+    "@types/mocha": "^8.0.3",
+    "@types/node": "^14.6.0",
+    "@typescript-eslint/eslint-plugin": "^3.10.1",
+    "@typescript-eslint/parser": "^3.10.1",
+    "eslint": "^7.7.0",
     "eslint-config-prettier": "^6.11.0",
     "eslint-config-standard": "^14.1.1",
     "eslint-plugin-import": "^2.22.0",
@@ -58,10 +59,10 @@
     "eslint-plugin-prettier": "^3.1.4",
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-standard": "^4.0.1",
-    "mocha": "^8.1.1",
+    "mocha": "^8.1.2",
     "npm-run-all": "^4.1.5",
-    "prettier": "^2.0.5",
-    "ts-node": "^8.10.2",
-    "typescript": "^3.9.7"
+    "prettier": "^2.1.1",
+    "ts-node": "^9.0.0",
+    "typescript": "^4.0.2"
   }
 }

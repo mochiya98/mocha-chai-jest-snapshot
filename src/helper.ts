@@ -1,7 +1,9 @@
+import path from "path";
+
 import { buildSnapshotResolver } from "jest-snapshot";
 import { SnapshotStateOptions } from "jest-snapshot/build/State";
 import { Config } from "@jest/types";
-import yargs = require("yargs");
+import yargs from "yargs";
 
 export const snapshotResolver = buildSnapshotResolver({
   rootDir: "default",
@@ -25,3 +27,15 @@ export const snapshotOptions: SnapshotStateOptions = {
   getPrettier: () => null,
   getBabelTraverse: () => () => null,
 };
+
+export function readJestConfig(
+  rootDir: Config.Path
+): Partial<Config.ProjectConfig> | undefined {
+  try {
+    // eslint-disable-next-line @typescript-eslint/no-var-requires
+    const jestConfig = require(path.join(rootDir, "./jest.config"));
+    return typeof jestConfig === "function" ? jestConfig() : jestConfig;
+  } catch (e) {
+    return undefined;
+  }
+}
