@@ -65,8 +65,8 @@ class SnapshotManager {
       isInline: false,
     });
     if (!pass) {
-      expect(expected ? expected.trim() : "").equals(
-        actual.trim(),
+      expect(actual.trim()).equals(
+        expected ? expected.trim() : "",
         message || `Snapshot name: \`${key}\``
       );
     }

@@ -18,7 +18,11 @@ module.exports = {
   overrides: [
     {
       files: ["**/*.ts"],
-      rules: { "@typescript-eslint/no-var-requires": ["error"] },
+      rules: {},
+    },
+    {
+      files: ["test/**"],
+      env: { mocha: true },
     },
   ],
 };

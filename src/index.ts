@@ -51,7 +51,6 @@ const jestSnapshotPlugin = (
     ?.concat()
     .reverse()
     .forEach((path) => {
-      // eslint-disable-next-line @typescript-eslint/no-var-requires
       addSerializer(require.main.require(path));
     });
 

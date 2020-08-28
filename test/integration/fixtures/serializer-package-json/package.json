@@ -1,0 +1,7 @@
+{
+  "jest": {
+    "snapshotSerializers": [
+      "test-serializer"
+    ]
+  }
+}

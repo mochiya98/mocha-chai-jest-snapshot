@@ -32,7 +32,6 @@ export function readJestConfig(
   rootDir: Config.Path
 ): Partial<Config.ProjectConfig> | undefined {
   try {
-    // eslint-disable-next-line @typescript-eslint/no-var-requires
     const jestConfig = require(path.join(rootDir, "./jest.config"));
     return typeof jestConfig === "function" ? jestConfig() : jestConfig;
   } catch (e) {

@@ -1,0 +1,280 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`mocha integration addSerializer 1`] = `
+Object {
+  "snapshots": Object {
+    "test.js.snap": "// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[\`foo bar 1\`] = \`serialized\`;
+",
+  },
+  "stderr": "",
+  "stdout": "
+
+  foo
+    ✓ bar
+
+
+  1 passing 
+
+",
+}
+`;
+
+exports[`mocha integration addSnapshotSerializer 1`] = `
+Object {
+  "snapshots": Object {
+    "test.js.snap": "// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[\`foo bar 1\`] = \`serialized\`;
+",
+  },
+  "stderr": "",
+  "stdout": "
+
+  foo
+    ✓ bar
+
+
+  1 passing 
+
+",
+}
+`;
+
+exports[`mocha integration match-snapshot 1`] = `
+Object {
+  "snapshots": Object {
+    "test.js.snap": "// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[\`foo bar 1\`] = \`\\"match\\"\`;
+",
+  },
+  "stderr": "",
+  "stdout": "
+
+  foo
+    ✓ bar
+
+
+  1 passing 
+
+",
+}
+`;
+
+exports[`mocha integration new-snapshot 1`] = `
+Object {
+  "snapshots": Object {
+    "test.js.snap": "// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[\`foo bar 1\`] = \`\\"new\\"\`;
+",
+  },
+  "stderr": "",
+  "stdout": "
+
+  foo
+    ✓ bar
+
+
+Snapshot Summary
+ › 1 snapshot written from 1 test suite.
+
+  1 passing 
+
+",
+}
+`;
+
+exports[`mocha integration new-snapshot-ci 1`] = `
+Object {
+  "snapshots": Object {},
+  "stderr": "",
+  "stdout": "
+
+  foo
+    1) bar
+
+
+Snapshot Summary
+ › 1 snapshot failed from 1 test suite. Inspect your code changes or re-run mocha with \`--update\` to update them to update them.
+
+  0 passing 
+  1 failing
+
+  1) foo
+       bar:
+
+      AssertionError: Snapshot name: \`foo bar 1\`: expected '\\"new\\"' to equal ''
+      + expected - actual
+
+      -\\"new\\"
+      
+      at SnapshotManager.assert (<rootDir>/src/manager.ts)
+      at Proxy.<anonymous> (<rootDir>/src/index.ts)
+      at Proxy.methodWrapper (<rootDir>/node_modules/chai/lib/chai/utils/addMethod.js)
+      at Context.<anonymous> (test.js)
+
+
+
+",
+}
+`;
+
+exports[`mocha integration obsolete-snapshot 1`] = `
+Object {
+  "snapshots": Object {
+    "test.js.snap": "// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[\`foo bar 1\`] = \`\\"snapshot\\"\`;
+",
+  },
+  "stderr": "",
+  "stdout": "
+
+  foo
+    ✓ bar
+
+
+Snapshot Summary
+ › 1 snapshot obsolete from 1 test suite. To remove it, re-run mocha with \`--update\` to update them.
+   ↳ ./test.js
+       • foo bar 1
+
+  1 passing 
+
+",
+}
+`;
+
+exports[`mocha integration serializer-json-config 1`] = `
+Object {
+  "snapshots": Object {
+    "test.js.snap": "// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[\`foo bar 1\`] = \`serialized\`;
+",
+  },
+  "stderr": "",
+  "stdout": "
+
+  foo
+    ✓ bar
+
+
+  1 passing 
+
+",
+}
+`;
+
+exports[`mocha integration serializer-package-json 1`] = `
+Object {
+  "snapshots": Object {
+    "test.js.snap": "// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[\`foo bar 1\`] = \`serialized\`;
+",
+  },
+  "stderr": "",
+  "stdout": "
+
+  foo
+    ✓ bar
+
+
+  1 passing 
+
+",
+}
+`;
+
+exports[`mocha integration unmatch-snapshot 1`] = `
+Object {
+  "snapshots": Object {
+    "test.js.snap": "// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[\`foo bar 1\`] = \`\\"snapshot\\"\`;
+",
+  },
+  "stderr": "",
+  "stdout": "
+
+  foo
+    1) bar
+
+
+Snapshot Summary
+ › 1 snapshot failed from 1 test suite. Inspect your code changes or re-run mocha with \`--update\` to update them to update them.
+
+  0 passing 
+  1 failing
+
+  1) foo
+       bar:
+
+      AssertionError: Snapshot name: \`foo bar 1\`: expected '\\"unmatch\\"' to equal '\\"snapshot\\"'
+      + expected - actual
+
+      -\\"unmatch\\"
+      +\\"snapshot\\"
+      
+      at SnapshotManager.assert (<rootDir>/src/manager.ts)
+      at Proxy.<anonymous> (<rootDir>/src/index.ts)
+      at Proxy.methodWrapper (<rootDir>/node_modules/chai/lib/chai/utils/addMethod.js)
+      at Context.<anonymous> (test.js)
+
+
+
+",
+}
+`;
+
+exports[`mocha integration update-snapshot-argv 1`] = `
+Object {
+  "snapshots": Object {
+    "test.js.snap": "// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[\`foo bar 1\`] = \`\\"unmatch\\"\`;
+",
+  },
+  "stderr": "",
+  "stdout": "
+
+  foo
+    ✓ bar
+
+
+Snapshot Summary
+ › 1 snapshot updated from 1 test suite.
+
+  1 passing 
+
+",
+}
+`;
+
+exports[`mocha integration update-snapshot-env 1`] = `
+Object {
+  "snapshots": Object {
+    "test.js.snap": "// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[\`foo bar 1\`] = \`\\"unmatch\\"\`;
+",
+  },
+  "stderr": "",
+  "stdout": "
+
+  foo
+    ✓ bar
+
+
+Snapshot Summary
+ › 1 snapshot updated from 1 test suite.
+
+  1 passing 
+
+",
+}
+`;
