@@ -24,7 +24,7 @@
   "types": "dist/index.d.ts",
   "scripts": {
     "build": "npx tsc",
-    "test": "npm run build && npx run-p -l test:*",
+    "test": "npm run build && npx run-p -l --aggregate-output test:*",
     "test:eslint": "npx eslint --color --cache 'src/**/*.ts' 'test/**/*.ts'",
     "test:mocha": "npx mocha -c -s 10000 -r ts-node/register/transpile-only --file setup.js 'test/**/*.test.ts'",
     "prepack": "npm run build"
