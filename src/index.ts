@@ -96,6 +96,7 @@ export {
 type SnapshotSerializerPlugin = import("pretty-format").Plugin;
 declare global {
   namespace Chai {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     interface Assertion {
       /** Assert that the object matches the snapshot */
       toMatchSnapshot(message?: string): Assertion;
