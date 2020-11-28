@@ -68,13 +68,14 @@ const jestSnapshotPlugin = (
       if (!_reporterAttached) _manager.report();
     });
     for (const key of ["matchSnapshot", "toMatchSnapshot"]) {
-      utils.addMethod(chai.Assertion.prototype, key, function (
-        this: Record<string, unknown>,
-        message?: string
-      ) {
-        const expected = utils.flag(this, "object");
-        _manager.assert(expected, message);
-      });
+      utils.addMethod(
+        chai.Assertion.prototype,
+        key,
+        function (this: Record<string, unknown>, message?: string) {
+          const expected = utils.flag(this, "object");
+          _manager.assert(expected, message);
+        }
+      );
     }
     chai.expect.addSnapshotSerializer = addSerializer;
   };
