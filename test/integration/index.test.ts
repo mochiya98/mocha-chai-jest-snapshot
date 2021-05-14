@@ -37,9 +37,7 @@ function readProjectConfig(projectName: string): Partial<MochaRunnerConfig> {
 const baseEnv = { ...process.env };
 delete baseEnv.CI;
 
-function runMochaIntegration(
-  projectName: string
-): Promise<{
+function runMochaIntegration(projectName: string): Promise<{
   stdout: string;
   stderr: string;
   snapshots: Record<string, string>;

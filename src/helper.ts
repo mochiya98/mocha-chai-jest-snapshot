@@ -27,7 +27,7 @@ export const snapshotOptions: SnapshotStateOptions = {
   getPrettier: () => null,
   getBabelTraverse: () =>
     // eslint-disable-next-line @typescript-eslint/no-empty-function
-    ((() => {}) as unknown) as typeof import("@babel/traverse").default,
+    (() => {}) as unknown as typeof import("@babel/traverse").default,
 };
 
 export function readJestConfig(
