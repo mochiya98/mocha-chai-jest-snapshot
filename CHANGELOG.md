@@ -1,3 +1,10 @@
+## [1.1.2] - 2021-05-15
+
+### Changed
+
+- update dependencies
+- refactor: remove unused export
+
 ## [1.1.1] - 2020-10-11
 
 ### Changed
