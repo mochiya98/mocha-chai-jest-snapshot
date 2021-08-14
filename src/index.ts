@@ -56,10 +56,15 @@ const jestSnapshotPlugin = (
 
   _manager = new SnapshotManager({
     rootDir,
-    snapshotResolver: buildSnapshotResolver(config),
   });
 
   return function (this: Mocha.Context, chai, utils) {
+    before(async () => {
+      _manager.snapshotResolver = await buildSnapshotResolver({
+        transform: [],
+        ...config,
+      });
+    });
     beforeEach(function () {
       if (this.currentTest) _manager.setContext(this.currentTest);
     });

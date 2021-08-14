@@ -23,15 +23,15 @@ class SnapshotManager {
   snapshotSummary: SnapshotSummary = makeEmptySnapshotSummary(snapshotOptions);
   context: Runnable | Context | null = null;
   testFile = "";
-  snapshotResolver: SnapshotResolver;
+  snapshotResolver: SnapshotResolver | null;
   rootDir: Config.Path;
 
   constructor({
     rootDir,
-    snapshotResolver,
+    snapshotResolver = null,
   }: {
     rootDir: Config.Path;
-    snapshotResolver: SnapshotResolver;
+    snapshotResolver?: SnapshotResolver | null;
   }) {
     this.rootDir = rootDir;
     this.snapshotResolver = snapshotResolver;

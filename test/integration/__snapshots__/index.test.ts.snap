@@ -12,7 +12,7 @@ exports[\`foo bar 1\`] = \`serialized\`;
   "stdout": "
 
   foo
-    ✓ bar
+    ✔ bar
 
 
   1 passing 
@@ -33,7 +33,7 @@ exports[\`foo bar 1\`] = \`serialized\`;
   "stdout": "
 
   foo
-    ✓ bar
+    ✔ bar
 
 
   1 passing 
@@ -54,7 +54,7 @@ exports[\`foo bar 1\`] = \`\\"match\\"\`;
   "stdout": "
 
   foo
-    ✓ bar
+    ✔ bar
 
 
   1 passing 
@@ -75,7 +75,7 @@ exports[\`foo bar 1\`] = \`\\"new\\"\`;
   "stdout": "
 
   foo
-    ✓ bar
+    ✔ bar
 
 
 Snapshot Summary
@@ -134,7 +134,7 @@ exports[\`foo bar 1\`] = \`\\"snapshot\\"\`;
   "stdout": "
 
   foo
-    ✓ bar
+    ✔ bar
 
 
 Snapshot Summary
@@ -160,7 +160,7 @@ exports[\`foo bar 1\`] = \`serialized\`;
   "stdout": "
 
   foo
-    ✓ bar
+    ✔ bar
 
 
   1 passing 
@@ -181,7 +181,7 @@ exports[\`foo bar 1\`] = \`serialized\`;
   "stdout": "
 
   foo
-    ✓ bar
+    ✔ bar
 
 
   1 passing 
@@ -243,7 +243,7 @@ exports[\`foo bar 1\`] = \`\\"unmatch\\"\`;
   "stdout": "
 
   foo
-    ✓ bar
+    ✔ bar
 
 
 Snapshot Summary
@@ -267,7 +267,7 @@ exports[\`foo bar 1\`] = \`\\"unmatch\\"\`;
   "stdout": "
 
   foo
-    ✓ bar
+    ✔ bar
 
 
 Snapshot Summary
