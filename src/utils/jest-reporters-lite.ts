@@ -31,7 +31,7 @@ const SNAPSHOT_REMOVED = chalk.bold.green;
 const SNAPSHOT_SUMMARY = chalk.bold;
 const SNAPSHOT_UPDATED = chalk.bold.green;
 
-const updateCommand = "re-run mocha with `--update` to update them";
+const updateCommand = "re-run mocha with `--update`";
 
 export const getSnapshotSummaryOutput = (
   rootDir: Config.Path,
