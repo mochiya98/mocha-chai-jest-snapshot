@@ -1,10 +1,6 @@
 import chai from "chai";
 import { Runnable, Context } from "mocha";
-import {
-  SnapshotState,
-  SnapshotStateType,
-  SnapshotResolver,
-} from "jest-snapshot";
+import { SnapshotState, SnapshotResolver } from "jest-snapshot";
 
 import {
   SnapshotSummary,
@@ -14,23 +10,22 @@ import {
 } from "./utils/jest-test-result-helper";
 import { getSnapshotSummaryOutput } from "./utils/jest-reporters-lite";
 import { snapshotOptions } from "./helper";
-import { Config } from "@jest/types";
 
 const { expect } = chai;
 
 class SnapshotManager {
-  snapshotState: SnapshotStateType | null = null;
+  snapshotState: SnapshotState | null = null;
   snapshotSummary: SnapshotSummary = makeEmptySnapshotSummary(snapshotOptions);
   context: Runnable | Context | null = null;
   testFile = "";
   snapshotResolver: SnapshotResolver | null;
-  rootDir: Config.Path;
+  rootDir: string;
 
   constructor({
     rootDir,
     snapshotResolver = null,
   }: {
-    rootDir: Config.Path;
+    rootDir: string;
     snapshotResolver?: SnapshotResolver | null;
   }) {
     this.rootDir = rootDir;

@@ -9,7 +9,7 @@ import {
   TestResult,
   makeEmptyAggregatedTestResult,
 } from "@jest/test-result";
-import { SnapshotStateType } from "jest-snapshot";
+import { SnapshotState } from "jest-snapshot";
 import { SnapshotStateOptions } from "jest-snapshot/build/State";
 
 type SnapshotResult = TestResult["snapshot"];
@@ -25,7 +25,7 @@ export const makeEmptySnapshotSummary = (
 };
 
 export const packSnapshotState = (
-  snapshotState: SnapshotStateType
+  snapshotState: SnapshotState
 ): SnapshotResult => {
   const snapshot: SnapshotResult = {
     added: 0,

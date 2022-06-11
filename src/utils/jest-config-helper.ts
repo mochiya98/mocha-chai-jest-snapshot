@@ -6,11 +6,9 @@
  */
 import path from "path";
 
-import { Config } from "@jest/types";
-
 export const replaceRootDirInPath = (
-  rootDir: Config.Path,
-  filePath: Config.Path
+  rootDir: string,
+  filePath: string
 ): string => {
   if (!/^<rootDir>/.test(filePath)) {
     return filePath;
@@ -18,12 +16,20 @@ export const replaceRootDirInPath = (
 
   return path.resolve(
     rootDir,
-    path.normalize("./" + filePath.substr("<rootDir>".length))
+    path.normalize(`./${filePath.substring("<rootDir>".length)}`)
   );
 };
 
-export const replaceRootDirInObject = <T extends unknown>(
-  rootDir: Config.Path,
+type OrArray<T> = T | Array<T>;
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+type ReplaceRootDirConfigObj = Record<string, any>;
+type ReplaceRootDirConfigValues =
+  | OrArray<ReplaceRootDirConfigObj>
+  | OrArray<RegExp>
+  | OrArray<string>;
+
+export const replaceRootDirInObject = <T extends ReplaceRootDirConfigObj>(
+  rootDir: string,
   config: T
 ): T => {
   const newConfig = {} as T;
@@ -36,8 +42,8 @@ export const replaceRootDirInObject = <T extends unknown>(
   return newConfig;
 };
 
-export const _replaceRootDirTags = <T extends unknown>(
-  rootDir: Config.Path,
+export const _replaceRootDirTags = <T extends ReplaceRootDirConfigValues>(
+  rootDir: string,
   config: T
 ): T => {
   if (config == null) {
@@ -53,9 +59,11 @@ export const _replaceRootDirTags = <T extends unknown>(
         return config;
       }
 
-      return replaceRootDirInObject(rootDir, config) as T;
+      return replaceRootDirInObject(
+        rootDir,
+        config as ReplaceRootDirConfigObj
+      ) as T;
     case "string":
       return replaceRootDirInPath(rootDir, config) as T;
   }
-  return config;
 };

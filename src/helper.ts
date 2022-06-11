@@ -7,9 +7,11 @@ import yargs from "yargs";
 const ARGV_CI = !!process.env.CI;
 const ARGV_UPDATE_SNAPSHOT =
   !!process.env.UPDATE_SNAPSHOT ||
-  yargs.options({
-    update: { type: "boolean", default: false },
-  }).argv.update;
+  yargs
+    .options({
+      update: { type: "boolean", default: false },
+    })
+    .parseSync().update;
 
 export const snapshotOptions: SnapshotStateOptions = {
   updateSnapshot:
@@ -23,7 +25,7 @@ export const snapshotOptions: SnapshotStateOptions = {
 };
 
 export function readJestConfig(
-  rootDir: Config.Path
+  rootDir: string
 ): Partial<Config.ProjectConfig> | undefined {
   try {
     const jestConfig = require(path.join(rootDir, "./jest.config"));

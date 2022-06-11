@@ -4,14 +4,13 @@
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  */
-import { Config } from "@jest/types";
 import { SnapshotSummary } from "@jest/test-result";
 import { pluralize } from "jest-util";
 import path, { isAbsolute } from "path";
 import slash from "slash";
 import chalk = require("chalk");
 
-const formatTestPath = (rootDir: Config.Path, testPath: Config.Path) => {
+const formatTestPath = (rootDir: string, testPath: string) => {
   if (isAbsolute(testPath)) {
     testPath = path.relative(rootDir, testPath);
   }
@@ -34,7 +33,7 @@ const SNAPSHOT_UPDATED = chalk.bold.green;
 const updateCommand = "re-run mocha with `--update` to update them";
 
 export const getSnapshotSummaryOutput = (
-  rootDir: Config.Path,
+  rootDir: string,
   snapshots: SnapshotSummary
 ): Array<string> => {
   const summary = [];
