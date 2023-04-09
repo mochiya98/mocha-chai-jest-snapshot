@@ -10,7 +10,8 @@ import {
   makeEmptyAggregatedTestResult,
 } from "@jest/test-result";
 import { SnapshotState } from "jest-snapshot";
-import { SnapshotStateOptions } from "jest-snapshot/build/State";
+
+type SnapshotStateOptions = ConstructorParameters<typeof SnapshotState>[1];
 
 type SnapshotResult = TestResult["snapshot"];
 
