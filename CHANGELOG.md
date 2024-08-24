@@ -1,3 +1,11 @@
+## [1.1.5] - 2023-08-25
+
+### Changed
+
+- update dependencies
+- #15 [Fix #15 - Cannot find name 'SnapshotStateOptions'](https://github.com/mochiya98/mocha-chai-jest-snapshot/pull/19)
+  - thanks @Maxim-Mazurok !
+
 ## [1.1.4] - 2021-06-11
 
 ### Changed

@@ -1,6 +1,6 @@
 # 🍵mocha-chai-jest-snapshot📷
 
-![Travis (.org)](https://img.shields.io/travis/mochiya98/mocha-chai-jest-snapshot?style=flat-square) ![npm](https://img.shields.io/npm/v/mocha-chai-jest-snapshot?style=flat-square) ![MIT](https://img.shields.io/npm/l/mocha-chai-jest-snapshot?style=flat-square)
+![npm](https://img.shields.io/npm/v/mocha-chai-jest-snapshot?style=flat-square) ![MIT](https://img.shields.io/npm/l/mocha-chai-jest-snapshot?style=flat-square)
 
 [![NPM](https://nodei.co/npm/mocha-chai-jest-snapshot.png)](https://nodei.co/npm/mocha-chai-jest-snapshot/)
 
