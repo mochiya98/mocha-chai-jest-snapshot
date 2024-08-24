@@ -1,5 +1,5 @@
-import path from "path";
-import nodeUtil from "util";
+import path from "node:path";
+import nodeUtil from "node:util";
 
 import { use as chaiUse } from "chai";
 import {

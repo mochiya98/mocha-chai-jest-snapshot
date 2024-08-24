@@ -6,7 +6,7 @@
  */
 import { SnapshotSummary } from "@jest/test-result";
 import { pluralize } from "jest-util";
-import path, { isAbsolute } from "path";
+import path, { isAbsolute } from "node:path";
 import slash from "slash";
 import chalk = require("chalk");
 

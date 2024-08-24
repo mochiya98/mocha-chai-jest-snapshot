@@ -1,11 +1,15 @@
-import path from "path";
+import path from "node:path";
+import fs from "node:fs/promises";
 
 import mockRequire from "mock-require";
 
 import Mocha, { MochaOptions, Runner } from "mocha";
-import { argv } from "yargs";
+import yargs from "yargs/yargs";
+const argv = yargs(process.argv.slice(2)).options({
+  project: { type: "string", demandOption: true },
+}).argv as { project: string };
 
-import { applyMockFs, resolvePath, collectSnapshots } from "./helper";
+import { resolvePath, collectSnapshots, restoreSnapshots } from "./helper";
 import { MochaRunnerRunMsg, MochaRunnerRecvMsg } from "./types";
 
 mockRequire("test-serializer", {
@@ -42,8 +46,8 @@ async function run(mochaOptions: Partial<MochaOptions>) {
   await new Promise((resolve) => {
     mocha.run().once(Runner.constants.EVENT_RUN_END, resolve);
   });
-  const snapshots = await collectSnapshots(argv.project as string);
-  process.send({ type: "result", snapshots });
+  const snapshots = await collectSnapshots(argv.project);
+  process.send!({ type: "result", snapshots: snapshots || {} });
 }
 
 new Promise<MochaRunnerRunMsg>((resolve) => {
@@ -54,7 +58,10 @@ new Promise<MochaRunnerRunMsg>((resolve) => {
         break;
     }
   });
-}).then((msg) => {
-  if (!msg.disableMock) applyMockFs();
-  run(msg.mochaOptions);
+}).then(async (msg) => {
+  const beforeSnapshots = await collectSnapshots(argv.project);
+  await run(msg.mochaOptions);
+  if (!msg.disableMock) {
+    await restoreSnapshots(argv.project, beforeSnapshots);
+  }
 });

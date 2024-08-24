@@ -1,4 +1,4 @@
-import path from "path";
+import path from "node:path";
 
 import { SnapshotStateOptions } from "jest-snapshot/build/State";
 import { Config } from "@jest/types";
@@ -18,8 +18,8 @@ export const snapshotOptions: SnapshotStateOptions = {
     ARGV_CI && !ARGV_UPDATE_SNAPSHOT
       ? "none"
       : ARGV_UPDATE_SNAPSHOT
-      ? "all"
-      : "new",
+        ? "all"
+        : "new",
   // unused
   prettierPath: "prettier",
 };

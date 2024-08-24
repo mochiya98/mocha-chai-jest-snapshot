@@ -1,6 +1,6 @@
-import fs from "fs";
-import path from "path";
-import childProcess from "child_process";
+import fs from "node:fs";
+import path from "node:path";
+import childProcess from "node:child_process";
 
 import pLimit from "p-limit";
 import { expect } from "chai";
@@ -25,10 +25,9 @@ type MochaRunnerConfig = {
 
 function readProjectConfig(projectName: string): Partial<MochaRunnerConfig> {
   try {
-    return require(path.resolve(
-      __dirname,
-      `./fixtures/${projectName}/config.js`
-    ));
+    return require(
+      path.resolve(__dirname, `./fixtures/${projectName}/config.js`)
+    );
   } catch (e) {
     return {};
   }
@@ -61,11 +60,11 @@ function runMochaIntegration(projectName: string): Promise<{
           silent: true,
         }
       );
-      const stdoutBuf = [];
-      const stderrBuf = [];
+      const stdoutBuf: Buffer[] = [];
+      const stderrBuf: Buffer[] = [];
       let snapshots = {};
-      proc.stdout.on("data", (c) => stdoutBuf.push(c));
-      proc.stderr.on("data", (c) => stderrBuf.push(c));
+      proc.stdout!.on("data", (c) => stdoutBuf.push(c));
+      proc.stderr!.on("data", (c) => stderrBuf.push(c));
       proc.on("message", function (msg: MochaRunnerResultMsg) {
         switch (msg.type) {
           case "result":
