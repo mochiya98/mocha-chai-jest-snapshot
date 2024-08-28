@@ -35,6 +35,9 @@
     "reporters/**",
     "setup.js"
   ],
+  "workspaces": [
+    "test/chai-v5"
+  ],
   "dependencies": {
     "@jest/test-result": "^29.7.0",
     "chalk": "^4.1.2",
@@ -43,9 +46,6 @@
     "jest-util": "^29.7.0",
     "slash": "^3.0.0",
     "yargs": "^17.7.2"
-  },
-  "peerDependencies": {
-    "chai": "^4.3.6"
   },
   "devDependencies": {
     "@biomejs/biome": "^1.8.3",

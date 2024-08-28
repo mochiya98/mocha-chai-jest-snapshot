@@ -1,4 +1,3 @@
-import chai from "chai";
 import { Runnable, Context } from "mocha";
 import { SnapshotState, SnapshotResolver } from "jest-snapshot";
 
@@ -11,9 +10,8 @@ import {
 import { getSnapshotSummaryOutput } from "./utils/jest-reporters-lite";
 import { snapshotOptions } from "./helper";
 
-const { expect } = chai;
-
 class SnapshotManager {
+  declare chai: Chai.ChaiStatic;
   snapshotState: SnapshotState | null = null;
   snapshotSummary: SnapshotSummary = makeEmptySnapshotSummary(snapshotOptions);
   context: Runnable | Context | null = null;
@@ -44,10 +42,11 @@ class SnapshotManager {
     );
   }
 
-  setContext(context: Runnable | Context): void {
+  setContext(context: Runnable | Context, chai: Chai.ChaiStatic): void {
     if (!context.title || !context.file) return;
 
     this.context = context;
+    this.chai = chai
     if (this.testFile !== context.file) this.onFileChanged();
   }
 
@@ -60,7 +59,7 @@ class SnapshotManager {
       isInline: false,
     });
     if (!pass) {
-      expect(actual.trim()).equals(
+      this.chai.expect(actual.trim()).equals(
         expected ? expected.trim() : "",
         message || `Snapshot name: \`${key}\``
       );
