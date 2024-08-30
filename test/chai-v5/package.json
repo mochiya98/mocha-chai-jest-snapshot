@@ -8,10 +8,6 @@
   "dependencies": {
     "chai": "^5.0.0",
     "mocha": "^10.7.3",
-    "mocha-chai-jest-snapshot": "*",
-    "ts-node": "^10.9.2"
-  },
-  "mocha": {
-    "loader": "ts-node/esm"
+    "mocha-chai-jest-snapshot": "*"
   }
 }
