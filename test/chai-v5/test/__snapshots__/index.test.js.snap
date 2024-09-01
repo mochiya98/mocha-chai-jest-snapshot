@@ -1,5 +1,3 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`chai-v5 should fail 1`] = `"chai v5"`;
-
 exports[`chai-v5 should work 1`] = `"chai v5"`;

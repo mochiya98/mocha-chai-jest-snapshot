@@ -30,4 +30,3 @@ jobs:
       - run: npm ci
       - run: npm run build
       - run: npm run -w test/chai-v5 test
-        continue-on-error: true
