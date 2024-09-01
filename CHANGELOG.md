@@ -1,3 +1,10 @@
+## [1.1.6] - 2023-09-02
+
+### Changed
+
+- #21 [fix: compatibility with chai v5](https://github.com/mochiya98/mocha-chai-jest-snapshot/pull/21)
+  - thanks @tpluscode !
+
 ## [1.1.5] - 2023-08-25
 
 ### Changed
