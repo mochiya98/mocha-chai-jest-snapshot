@@ -1,0 +1,13 @@
+{
+  "name": "test-chai-v5",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "mocha --file setup.js --file test/index.test.js"
+  },
+  "dependencies": {
+    "chai": "^5.0.0",
+    "mocha": "^10.7.3",
+    "mocha-chai-jest-snapshot": "*"
+  }
+}

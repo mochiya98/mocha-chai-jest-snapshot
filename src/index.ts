@@ -1,7 +1,7 @@
 import path from "node:path";
 import nodeUtil from "node:util";
 
-import { use as chaiUse } from "chai";
+import type { use as chaiUse } from "chai";
 import {
   addSerializer,
   getSerializers,
@@ -66,7 +66,7 @@ const jestSnapshotPlugin = (
       });
     });
     beforeEach(function () {
-      if (this.currentTest) _manager.setContext(this.currentTest);
+      if (this.currentTest) _manager.setContext(this.currentTest, chai);
     });
     after(function () {
       _manager.saveSnap();
