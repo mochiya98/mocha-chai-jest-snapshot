@@ -24,17 +24,21 @@ npm i -D mocha-chai-jest-snapshot
 then add it to the test setup:
 
 ```js
-// e.g. setup.js (mocha --file setup.js)
-const chai = require("chai");
-const { jestSnapshotPlugin } = require("mocha-chai-jest-snapshot");
+// e.g. setup.js (mocha --require setup.js)
+import * as chai from "chai";
+import { jestSnapshotPlugin } from "mocha-chai-jest-snapshot";
 
-chai.use(jestSnapshotPlugin());
+export const mochaHooks = {
+  beforeAll() {
+    chai.use(jestSnapshotPlugin());
+  }
+}
 ```
 
 enjoy.
 
 ```js
-const { expect } = require("chai");
+import { expect } import "chai";
 it("foo", function () {
   expect({ foo: "bar" }).toMatchSnapshot();
 });
@@ -83,8 +87,8 @@ npx mocha ... --reporter mocha-chai-jest-snapshot/reporters/spec
 #### jest options (setup)
 
 ```js
-const chai = require("chai");
-const { jestSnapshotPlugin } = require("mocha-chai-jest-snapshot");
+import * as chai from "chai";
+import { jestSnapshotPlugin } from "mocha-chai-jest-snapshot";
 
 chai.use(
   jestSnapshotPlugin({
@@ -120,22 +124,26 @@ module.exports = {
 #### custom serializer
 
 ```js
-const chai = require("chai");
-const {
+import * as chai from "chai";
+import {
   jestSnapshotPlugin,
   addSerializer,
-} = require("mocha-chai-jest-snapshot");
-const customSerializer = require("...");
+} from "mocha-chai-jest-snapshot";
+import customSerializer = from "...";
 
-chai.use(jestSnapshotPlugin());
-addSerializer(customSerializer);
+export const mochaHooks = {
+  beforeAll() {
+    chai.use(jestSnapshotPlugin());
+    addSerializer(customSerializer);
+  }
+}
 ```
 
 or
 
 ```js
-const { expect } = require("chai");
-const customSerializer = require("...");
+import { expect } from "chai";
+import customSerializer from "...";
 
 expect.addSnapshotSerializer(customSerializer);
 ```
