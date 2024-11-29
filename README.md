@@ -24,11 +24,15 @@ npm i -D mocha-chai-jest-snapshot
 then add it to the test setup:
 
 ```js
-// e.g. setup.js (mocha --file setup.js)
+// e.g. setup.js (mocha --require setup.js)
 const chai = require("chai");
 const { jestSnapshotPlugin } = require("mocha-chai-jest-snapshot");
 
-chai.use(jestSnapshotPlugin());
+export const mochaHooks = {
+  before() {
+    chai.use(jestSnapshotPlugin());
+  }
+}
 ```
 
 enjoy.
