@@ -29,7 +29,7 @@ import * as chai from "chai";
 import { jestSnapshotPlugin } from "mocha-chai-jest-snapshot";
 
 export const mochaHooks = {
-  before() {
+  beforeAll() {
     chai.use(jestSnapshotPlugin());
   }
 }
@@ -132,7 +132,7 @@ import {
 import customSerializer = from "...";
 
 export const mochaHooks = {
-  before() {
+  beforeAll() {
     chai.use(jestSnapshotPlugin());
     addSerializer(customSerializer);
   }
