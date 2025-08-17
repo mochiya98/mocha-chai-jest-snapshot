@@ -2,16 +2,9 @@ import path from "node:path";
 
 import { SnapshotStateOptions } from "jest-snapshot/build/State";
 import { Config } from "@jest/types";
-import yargs from "yargs";
 
 const ARGV_CI = !!process.env.CI;
-const ARGV_UPDATE_SNAPSHOT =
-  !!process.env.UPDATE_SNAPSHOT ||
-  yargs
-    .options({
-      update: { type: "boolean", default: false },
-    })
-    .parseSync().update;
+const ARGV_UPDATE_SNAPSHOT = !!process.env.UPDATE_SNAPSHOT || process.argv.includes('--update')
 
 export const snapshotOptions: SnapshotStateOptions = {
   updateSnapshot:
