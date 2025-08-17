@@ -1,3 +1,13 @@
+## [1.1.7] - 2025-08-17
+
+### Changed
+
+- #26 [Fixes usage with tsx #27](https://github.com/mochiya98/mocha-chai-jest-snapshot/pull/26)
+  - thanks @tpluscode !
+- removed yargs completely from dependencies and added a simple alternative
+- (development) switched to yarn 4.x
+- updated dependencies
+
 ## [1.1.6] - 2023-09-02
 
 ### Changed

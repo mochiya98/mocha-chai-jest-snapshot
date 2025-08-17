@@ -1,6 +1,6 @@
 {
   "name": "mocha-chai-jest-snapshot",
-  "version": "1.1.6",
+  "version": "1.1.7",
   "description": "provides snapshot testing like jest",
   "keywords": [
     "mocha",
