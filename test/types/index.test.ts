@@ -8,7 +8,12 @@ function getCompilerOptions() {
     path.resolve(__dirname, "./tsconfig.json"),
     ts.sys.readFile
   );
-  const { compilerOptions } = configFile.config;
+  const converted = ts.convertCompilerOptionsFromJson(
+    configFile.config.compilerOptions || {},
+    path.resolve(__dirname, ".")
+  );
+  const compilerOptions = converted.options;
+
   if (compilerOptions.baseUrl) {
     compilerOptions.baseUrl = path.resolve(__dirname, compilerOptions.baseUrl);
   }

@@ -1,13 +1,16 @@
 import path from "node:path";
-import fs from "node:fs/promises";
+import fs from "node:fs";
 
 import mockRequire from "mock-require";
 
 import Mocha, { MochaOptions, Runner } from "mocha";
-import yargs from "yargs/yargs";
-const argv = yargs(process.argv.slice(2)).options({
-  project: { type: "string", demandOption: true },
-}).argv as { project: string };
+import margs from "../../../../src/margs";
+
+const argv = margs
+  .options({
+    project: { type: "string", demandOption: true },
+  })
+  .parseSync() as { project: string };
 
 import { resolvePath, collectSnapshots, restoreSnapshots } from "./helper";
 import { MochaRunnerRunMsg, MochaRunnerRecvMsg } from "./types";
@@ -24,7 +27,7 @@ mockRequire("find-package-json", (basePath: string) => {
   const filename = path.resolve(basePath, "package.json");
   let value = {};
   try {
-    value = require(filename);
+    value = JSON.parse(fs.readFileSync(filename, "utf-8"));
   } catch (e) {}
   return {
     done: false,

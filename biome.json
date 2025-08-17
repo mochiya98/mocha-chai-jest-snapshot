@@ -1,16 +1,17 @@
 {
-  "$schema": "https://biomejs.dev/schemas/1.8.3/schema.json",
-  "organizeImports": {
-    "enabled": false
-  },
+  "$schema": "https://biomejs.dev/schemas/2.2.0/schema.json",
+  "assist": { "actions": { "source": { "organizeImports": "off" } } },
   "formatter": {
     "enabled": false
   },
   "linter": {
     "enabled": true,
-    "ignore": ["dist/**"],
+    "includes": ["**", "!**/dist/**"],
     "rules": {
       "recommended": true,
+      "correctness": {
+        "noUnusedVariables": "off"
+      },
       "complexity": {
         "useArrowFunction": "off",
         "useOptionalChain": "off",
