@@ -14,10 +14,17 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: lts/*
-          cache: "npm"
-      - run: npm ci
-      - run: npm run build
-      - run: npm test
+          cache: "yarn"
+      - name: Enable Corepack and prepare Yarn
+        run: |
+          corepack enable
+          corepack prepare yarn@4.9.2 --activate
+      - name: Install dependencies
+        run: yarn --no-immutable
+      - name: Build
+        run: yarn build
+      - name: Test
+        run: yarn test
 
   chai-v5-smoke-test:
     runs-on: ubuntu-latest
@@ -26,7 +33,14 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: lts/*
-          cache: "npm"
-      - run: npm ci
-      - run: npm run build
-      - run: npm run -w test/chai-v5 test
+          cache: "yarn"
+      - name: Enable Corepack and prepare Yarn
+        run: |
+          corepack enable
+          corepack prepare yarn@4.9.2 --activate
+      - name: Install dependencies
+        run: yarn --no-immutable
+      - name: Build
+        run: yarn build
+      - name: Chai v5 smoke test
+        run: yarn workspace test-chai-v5 test
