@@ -1,6 +1,6 @@
 import path from "node:path";
 
-import { SnapshotStateOptions } from "jest-snapshot/build/State";
+import type { SnapshotState } from "jest-snapshot";
 import { Config } from "@jest/types";
 import margs from "./margs";
 
@@ -9,6 +9,8 @@ const args = margs
     update: { type: "boolean", default: false },
   })
   .parseSync();
+
+type SnapshotStateOptions = ConstructorParameters<typeof SnapshotState>[1];
 
 const ARGV_CI = !!process.env.CI;
 const ARGV_UPDATE_SNAPSHOT = !!process.env.UPDATE_SNAPSHOT || args.update;
@@ -22,10 +24,12 @@ export const snapshotOptions: SnapshotStateOptions = {
         : "new",
   // unused
   prettierPath: "prettier",
+  snapshotFormat: {},
+  rootDir: process.cwd(),
 };
 
 export function readJestConfig(
-  rootDir: string
+  rootDir: string,
 ): Partial<Config.ProjectConfig> | undefined {
   try {
     const jestConfig = require(path.join(rootDir, "./jest.config"));

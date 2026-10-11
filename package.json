@@ -25,7 +25,8 @@
   "type": "commonjs",
   "scripts": {
     "build": "npx tsc",
-    "test": "yarn build && yarn test:biome && yarn test:mocha",
+    "test": "yarn build && yarn test:biome && yarn test:mocha  && yarn text:prettier",
+    "text:prettier": "npx prettier --check .",
     "test:biome": "npx biome check",
     "test:mocha": "npx mocha -c -s 10000 --file setup.js --require ts-node/register/transpile-only --extensions ts 'test/**/*.test.ts'",
     "prepack": "yarn build"
@@ -42,7 +43,7 @@
     "@jest/test-result": "^30.0.5",
     "chalk": "^4.1.2",
     "find-package-json": "^1.2.0",
-    "jest-snapshot": "^29.7.0",
+    "jest-snapshot": "^30.0.0",
     "jest-util": "^30.0.5",
     "slash": "^3.0.0"
   },

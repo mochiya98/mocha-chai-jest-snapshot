@@ -1,9 +1,9 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`mocha integration addSerializer 1`] = `
 Object {
   "snapshots": Object {
-    "test.js.snap": "// Jest Snapshot v1, https://goo.gl/fbAQLP
+    "test.js.snap": "// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[\`foo bar 1\`] = \`serialized\`;
 ",
@@ -24,7 +24,7 @@ exports[\`foo bar 1\`] = \`serialized\`;
 exports[`mocha integration addSnapshotSerializer 1`] = `
 Object {
   "snapshots": Object {
-    "test.js.snap": "// Jest Snapshot v1, https://goo.gl/fbAQLP
+    "test.js.snap": "// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[\`foo bar 1\`] = \`serialized\`;
 ",
@@ -45,7 +45,7 @@ exports[\`foo bar 1\`] = \`serialized\`;
 exports[`mocha integration match-snapshot 1`] = `
 Object {
   "snapshots": Object {
-    "test.js.snap": "// Jest Snapshot v1, https://goo.gl/fbAQLP
+    "test.js.snap": "// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[\`foo bar 1\`] = \`\\"match\\"\`;
 ",
@@ -66,7 +66,7 @@ exports[\`foo bar 1\`] = \`\\"match\\"\`;
 exports[`mocha integration new-snapshot 1`] = `
 Object {
   "snapshots": Object {
-    "test.js.snap": "// Jest Snapshot v1, https://goo.gl/fbAQLP
+    "test.js.snap": "// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[\`foo bar 1\`] = \`\\"new\\"\`;
 ",
@@ -125,7 +125,7 @@ Snapshot Summary
 exports[`mocha integration obsolete-snapshot 1`] = `
 Object {
   "snapshots": Object {
-    "test.js.snap": "// Jest Snapshot v1, https://goo.gl/fbAQLP
+    "test.js.snap": "// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[\`foo bar 1\`] = \`\\"snapshot\\"\`;
 ",
@@ -151,7 +151,7 @@ Snapshot Summary
 exports[`mocha integration serializer-json-config 1`] = `
 Object {
   "snapshots": Object {
-    "test.js.snap": "// Jest Snapshot v1, https://goo.gl/fbAQLP
+    "test.js.snap": "// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[\`foo bar 1\`] = \`serialized\`;
 ",
@@ -172,7 +172,7 @@ exports[\`foo bar 1\`] = \`serialized\`;
 exports[`mocha integration serializer-package-json 1`] = `
 Object {
   "snapshots": Object {
-    "test.js.snap": "// Jest Snapshot v1, https://goo.gl/fbAQLP
+    "test.js.snap": "// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[\`foo bar 1\`] = \`serialized\`;
 ",
@@ -193,7 +193,7 @@ exports[\`foo bar 1\`] = \`serialized\`;
 exports[`mocha integration unmatch-snapshot 1`] = `
 Object {
   "snapshots": Object {
-    "test.js.snap": "// Jest Snapshot v1, https://goo.gl/fbAQLP
+    "test.js.snap": "// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[\`foo bar 1\`] = \`\\"snapshot\\"\`;
 ",
@@ -234,7 +234,7 @@ Snapshot Summary
 exports[`mocha integration update-snapshot-argv 1`] = `
 Object {
   "snapshots": Object {
-    "test.js.snap": "// Jest Snapshot v1, https://goo.gl/fbAQLP
+    "test.js.snap": "// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[\`foo bar 1\`] = \`\\"unmatch\\"\`;
 ",
@@ -258,7 +258,7 @@ Snapshot Summary
 exports[`mocha integration update-snapshot-env 1`] = `
 Object {
   "snapshots": Object {
-    "test.js.snap": "// Jest Snapshot v1, https://goo.gl/fbAQLP
+    "test.js.snap": "// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[\`foo bar 1\`] = \`\\"unmatch\\"\`;
 ",

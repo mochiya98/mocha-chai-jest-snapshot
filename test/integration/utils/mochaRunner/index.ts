@@ -44,7 +44,7 @@ async function run(mochaOptions: Partial<MochaOptions>) {
   const mocha = new Mocha({ color: false, reporter: "spec", ...mochaOptions });
   mocha.addFile(resolvePath(`test/integration/setup.js`));
   mocha.addFile(
-    resolvePath(`test/integration/fixtures/${argv.project}/test.js`)
+    resolvePath(`test/integration/fixtures/${argv.project}/test.js`),
   );
   await new Promise((resolve) => {
     mocha.run().once(Runner.constants.EVENT_RUN_END, resolve);

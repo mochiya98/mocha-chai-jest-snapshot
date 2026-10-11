@@ -50,7 +50,7 @@ class Margs {
                 result[optionName] = false;
               } else {
                 console.error(
-                  `Error: Option --${optionName} requires a boolean value (true|false) when using --${optionName}=...`
+                  `Error: Option --${optionName} requires a boolean value (true|false) when using --${optionName}=...`,
                 );
                 this.showHelp();
                 process.exit(1);
@@ -81,7 +81,7 @@ class Margs {
               i++;
             } else {
               console.error(
-                `Error: Option --${optionName} requires a string value`
+                `Error: Option --${optionName} requires a string value`,
               );
               this.showHelp();
               process.exit(1);
@@ -91,17 +91,17 @@ class Margs {
             if (inlineValue !== undefined) {
               result[optionName] = this.parseNumberFromRaw(
                 this.unquote(inlineValue),
-                optionName
+                optionName,
               );
             } else if (nextRaw !== undefined) {
               result[optionName] = this.parseNumberFromRaw(
                 this.unquote(nextRaw),
-                optionName
+                optionName,
               );
               i++;
             } else {
               console.error(
-                `Error: Option --${optionName} requires a number value`
+                `Error: Option --${optionName} requires a number value`,
               );
               this.showHelp();
               process.exit(1);

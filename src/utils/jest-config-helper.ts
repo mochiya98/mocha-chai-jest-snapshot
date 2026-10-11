@@ -8,7 +8,7 @@ import path from "node:path";
 
 export const replaceRootDirInPath = (
   rootDir: string,
-  filePath: string
+  filePath: string,
 ): string => {
   if (!/^<rootDir>/.test(filePath)) {
     return filePath;
@@ -16,7 +16,7 @@ export const replaceRootDirInPath = (
 
   return path.resolve(
     rootDir,
-    path.normalize(`./${filePath.substring("<rootDir>".length)}`)
+    path.normalize(`./${filePath.substring("<rootDir>".length)}`),
   );
 };
 
@@ -30,7 +30,7 @@ type ReplaceRootDirConfigValues =
 
 export const replaceRootDirInObject = <T extends ReplaceRootDirConfigObj>(
   rootDir: string,
-  config: T
+  config: T,
 ): T => {
   const newConfig = {} as T;
   for (const configKey in config) {
@@ -44,7 +44,7 @@ export const replaceRootDirInObject = <T extends ReplaceRootDirConfigObj>(
 
 export const _replaceRootDirTags = <T extends ReplaceRootDirConfigValues>(
   rootDir: string,
-  config: T
+  config: T,
 ): T => {
   if (config == null) {
     return config;
@@ -61,7 +61,7 @@ export const _replaceRootDirTags = <T extends ReplaceRootDirConfigValues>(
 
       return replaceRootDirInObject(
         rootDir,
-        config as ReplaceRootDirConfigObj
+        config as ReplaceRootDirConfigObj,
       ) as T;
     case "string":
       return replaceRootDirInPath(rootDir, config) as T;

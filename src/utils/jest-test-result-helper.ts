@@ -18,7 +18,7 @@ type SnapshotResult = TestResult["snapshot"];
 export { SnapshotSummary };
 
 export const makeEmptySnapshotSummary = (
-  options: SnapshotStateOptions
+  options: SnapshotStateOptions,
 ): SnapshotSummary => {
   const summary = makeEmptyAggregatedTestResult().snapshot;
   summary.didUpdate = options.updateSnapshot === "all";
@@ -26,7 +26,7 @@ export const makeEmptySnapshotSummary = (
 };
 
 export const packSnapshotState = (
-  snapshotState: SnapshotState
+  snapshotState: SnapshotState,
 ): SnapshotResult => {
   const snapshot: SnapshotResult = {
     added: 0,
@@ -59,7 +59,7 @@ export const packSnapshotState = (
 export const addSnapshotResult = (
   snapshotSummary: SnapshotSummary,
   snapshotResult: SnapshotResult,
-  testFilePath: string
+  testFilePath: string,
 ): void => {
   // Snapshot data
   if (snapshotResult.added) {
