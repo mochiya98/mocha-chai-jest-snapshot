@@ -38,7 +38,7 @@ class SnapshotManager {
     this.testFile = this.context.file;
     this.snapshotState = new SnapshotState(
       this.snapshotResolver.resolveSnapshotPath(this.testFile),
-      snapshotOptions
+      { ...snapshotOptions, rootDir: this.rootDir }
     );
   }
 
