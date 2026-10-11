@@ -38,7 +38,7 @@ class SnapshotManager {
     this.testFile = this.context.file;
     this.snapshotState = new SnapshotState(
       this.snapshotResolver.resolveSnapshotPath(this.testFile),
-      { ...snapshotOptions, rootDir: this.rootDir }
+      { ...snapshotOptions, rootDir: this.rootDir },
     );
   }
 
@@ -46,7 +46,7 @@ class SnapshotManager {
     if (!context.title || !context.file) return;
 
     this.context = context;
-    this.chai = chai
+    this.chai = chai;
     if (this.testFile !== context.file) this.onFileChanged();
   }
 
@@ -59,10 +59,12 @@ class SnapshotManager {
       isInline: false,
     });
     if (!pass) {
-      this.chai.expect(actual.trim()).equals(
-        expected ? expected.trim() : "",
-        message || `Snapshot name: \`${key}\``
-      );
+      this.chai
+        .expect(actual.trim())
+        .equals(
+          expected ? expected.trim() : "",
+          message || `Snapshot name: \`${key}\``,
+        );
     }
   }
 
@@ -79,7 +81,7 @@ class SnapshotManager {
   report(): void {
     const outputs = getSnapshotSummaryOutput(
       this.rootDir,
-      this.snapshotSummary
+      this.snapshotSummary,
     );
     if (outputs.length > 1) console.log("\n" + outputs.join("\n"));
   }

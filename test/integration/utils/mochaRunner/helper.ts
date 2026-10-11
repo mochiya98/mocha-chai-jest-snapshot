@@ -6,10 +6,10 @@ export function resolvePath(relativePath: string): string {
 }
 
 export async function collectSnapshots(
-  projectName: string
+  projectName: string,
 ): Promise<Record<string, string> | null> {
   const snapshotDir = resolvePath(
-    `test/integration/fixtures/${projectName}/__snapshots__`
+    `test/integration/fixtures/${projectName}/__snapshots__`,
   );
   const snapshots: Record<string, string> = {};
   let files: string[] | null = null;
@@ -28,17 +28,17 @@ export async function collectSnapshots(
 
 export async function restoreSnapshots(
   projectName: string,
-  beforeSnapshots: Record<string, string> | null
+  beforeSnapshots: Record<string, string> | null,
 ) {
   const afterSnapshots = await collectSnapshots(projectName);
   if (beforeSnapshots === null) {
     fs.rm(
       resolvePath(`test/integration/fixtures/${projectName}/__snapshots__`),
-      { recursive: true }
+      { recursive: true },
     );
   } else {
     fs.mkdir(
-      resolvePath(`test/integration/fixtures/${projectName}/__snapshots__`)
+      resolvePath(`test/integration/fixtures/${projectName}/__snapshots__`),
     );
     const files = new Set([
       ...Object.keys(beforeSnapshots),
@@ -50,15 +50,15 @@ export async function restoreSnapshots(
       if (before === undefined && after !== undefined) {
         await fs.rm(
           resolvePath(
-            `test/integration/fixtures/${projectName}/__snapshots__/${fn}`
-          )
+            `test/integration/fixtures/${projectName}/__snapshots__/${fn}`,
+          ),
         );
       } else if (before !== after) {
         await fs.writeFile(
           resolvePath(
-            `test/integration/fixtures/${projectName}/__snapshots__/${fn}`
+            `test/integration/fixtures/${projectName}/__snapshots__/${fn}`,
           ),
-          before
+          before,
         );
       }
     }

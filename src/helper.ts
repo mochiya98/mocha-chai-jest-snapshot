@@ -29,7 +29,7 @@ export const snapshotOptions: SnapshotStateOptions = {
 };
 
 export function readJestConfig(
-  rootDir: string
+  rootDir: string,
 ): Partial<Config.ProjectConfig> | undefined {
   try {
     const jestConfig = require(path.join(rootDir, "./jest.config"));

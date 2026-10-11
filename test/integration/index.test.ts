@@ -26,7 +26,7 @@ type MochaRunnerConfig = {
 function readProjectConfig(projectName: string): Partial<MochaRunnerConfig> {
   try {
     return require(
-      path.resolve(__dirname, `./fixtures/${projectName}/config.js`)
+      path.resolve(__dirname, `./fixtures/${projectName}/config.js`),
     );
   } catch (e) {
     return {};
@@ -58,7 +58,7 @@ function runMochaIntegration(projectName: string): Promise<{
           env: { ...baseEnv, ...config.env },
           execArgv: ["-r", "ts-node/register/transpile-only"],
           silent: true,
-        }
+        },
       );
       const stdoutBuf: Buffer[] = [];
       const stderrBuf: Buffer[] = [];
@@ -94,7 +94,7 @@ const limitMochaWorker = pLimit(4);
 
 describe("mocha integration", function () {
   for (const projectName of fs.readdirSync(
-    path.resolve(__dirname, "./fixtures")
+    path.resolve(__dirname, "./fixtures"),
   )) {
     const queue = limitMochaWorker(() => runMochaIntegration(projectName));
     it(projectName, async function () {

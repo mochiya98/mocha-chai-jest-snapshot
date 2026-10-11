@@ -30,7 +30,7 @@ export function _getSnapshotManager(): SnapshotManager {
 }
 
 const jestSnapshotPlugin = (
-  optionalConfig?: Partial<Config.ProjectConfig>
+  optionalConfig?: Partial<Config.ProjectConfig>,
 ): ChaiPlugin => {
   const packageJson = findPackageJson(process.cwd()).next();
 
@@ -79,7 +79,7 @@ const jestSnapshotPlugin = (
         function (this: Record<string, unknown>, message?: string) {
           const expected = utils.flag(this, "object");
           _manager.assert(expected, message);
-        }
+        },
       );
     }
     chai.expect.addSnapshotSerializer = addSerializer;
@@ -89,7 +89,7 @@ const jestSnapshotPlugin = (
 const initSnapshotManager: ChaiPlugin = nodeUtil.deprecate(
   jestSnapshotPlugin(),
   "chai.use(initSnapshotManager) was deprecated. use chai.use(jestSnapshotPlugin()) instead.",
-  DEPRECATED_CODE_INIT_SNAPSHOT_MANAGER
+  DEPRECATED_CODE_INIT_SNAPSHOT_MANAGER,
 );
 
 export {

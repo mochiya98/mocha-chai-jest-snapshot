@@ -91,7 +91,7 @@ chai.use(
     rootDir: "../",
     snapshotResolver: "<rootDir>/jest/snapshotResolver",
     snapshotSerializers: ["jest-serializer-vue"],
-  })
+  }),
 );
 ```
 

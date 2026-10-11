@@ -25,7 +25,8 @@
   "type": "commonjs",
   "scripts": {
     "build": "npx tsc",
-    "test": "yarn build && yarn test:biome && yarn test:mocha",
+    "test": "yarn build && yarn test:biome && yarn test:mocha  && yarn text:prettier",
+    "text:prettier": "npx prettier --check .",
     "test:biome": "npx biome check",
     "test:mocha": "npx mocha -c -s 10000 --file setup.js --require ts-node/register/transpile-only --extensions ts 'test/**/*.test.ts'",
     "prepack": "yarn build"

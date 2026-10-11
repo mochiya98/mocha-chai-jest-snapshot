@@ -2,13 +2,13 @@ import mocha, { Runner, MochaOptions } from "mocha";
 import { _setReporterAttached, _getSnapshotManager } from "..";
 
 export function getHookReporter(
-  Base: unknown
+  Base: unknown,
 ): (runner: Runner, options: MochaOptions) => void {
   _setReporterAttached();
   function HookReporter(runner, options) {
     const inst = new (Base as (runner: Runner, options: MochaOptions) => void)(
       runner,
-      options
+      options,
     );
     runner.once(mocha.Runner.constants.EVENT_RUN_END, function () {
       const manager = _getSnapshotManager();
