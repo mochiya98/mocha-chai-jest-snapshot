@@ -1,3 +1,10 @@
+## [1.1.8] - 2026-10-11
+
+### Changed
+
+- #28 [build(deps): updated jest to v30](https://github.com/mochiya98/mocha-chai-jest-snapshot/pull/28)
+  - thanks @tpluscode !
+
 ## [1.1.7] - 2025-08-17
 
 ### Changed
